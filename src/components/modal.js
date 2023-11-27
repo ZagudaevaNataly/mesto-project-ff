@@ -1,27 +1,27 @@
-// openPopup, closePopup, closeByEsc
-function openPopup(querySelectorClassName) {
-    const popup = querySelectorClassName;
-    popup.classList.add("popup_is-opened");
-    document.addEventListener("keydown", closeByEsc);
-}
+function openModal(popupElement) {
+    popupElement.classList.add('popup_is-opened');
+    document.addEventListener('keydown', closeModalByEsc);
+    document.addEventListener('click', closeModalByOverlay);
+};
 
-function closePopup(querySelectorClassName) {
-    const popup = querySelectorClassName;
-    popup.classList.remove("popup_is-opened");
-    document.removeEventListener("keydown", closeByEsc);
-}
+function closeModal(popupElement) {
+    popupElement.classList.remove('popup_is-opened');
+    document.addEventListener("keydown", closeModalByEsc);
+    document.addEventListener('click', closeModalByOverlay);
+};
 
-function closeByEsc(evt) {
-    if (evt.key === "Escape") {
-        const openedPopup = document.querySelector(".popup_is-opened");
-        closePopup(openedPopup);
-    }
-}
+function closeModalByEsc(evt)  {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_is-opened');
+        closeModal(openedPopup);
+    };
+};
 
-// Плавное открытие и закрытие 
-const popups = [popupTypeEdit, popupTypeNewCard, popupTypeImage]
-popups.forEach(function(popupElement){
-  popupElement.classList.add('popup_is-animated');
-});
+function closeModalByOverlay(evt) {
+	if (evt.target.classList.contains('popup_is-opened')) {
+        const openedPopup = document.querySelector('.popup_is-opened');
+        closeModal(openedPopup);
+	};
+};
 
-export { openPopup, closePopup };
+export { openModal, closeModal }
