@@ -47,7 +47,7 @@ profileAddButton.addEventListener('click', function () {
 function openPopupImg(evt) {
     popupImage.src = evt.target.src;
     popupImage.alt = evt.target.alt;
-    popupCaption.textContent = evt.name;
+    popupCaption.textContent = evt.target.alt;
     openModal(popupTypeImage);
 };
 
