@@ -1,11 +1,13 @@
-// @todo: Темплейт карточки 
+// @todo: Темплейт карточки  
+
 const cardTemplate = document.querySelector("#card-template").content;
 
+// @todo: DOM узлы  
 
-// @todo: DOM узлы 
 const placesList = document.querySelector(".places__list");
 
-// @todo: Функция создания карточки 
+// @todo: Функция создания карточки  
+
 function createCard(cardElement, deleteCard, likeCard, openPopupImg) {
     const cardItem = cardTemplate.querySelector(".card").cloneNode(true),
         cardImage = cardItem.querySelector('.card__image'),
@@ -26,16 +28,16 @@ function createCard(cardElement, deleteCard, likeCard, openPopupImg) {
     return cardItem;
 }
 
-// @todo: Функция удаления карточки 
+// @todo: Функция удаления карточки  
+
 function deleteCard(evt) {
     evt.target.closest('.places__item').remove();
 }
 
-// Фукция лайка
+// Фукция лайка 
+
 function likeCard(evt) {
     evt.target.classList.toggle("card__like-button_is-active");
 };
 
-export { createCard, deleteCard, likeCard }
-
-
+export { createCard, deleteCard, likeCard } 
